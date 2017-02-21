@@ -55,8 +55,9 @@ public class Controller {
             this.ipField.setText("localhost");
             serverThread.start();
         }
-        this.client = new Client(this.model);
-        this.setUpChatListener();
+        client = new Client(model);
+        model.setUpChatListener(textArea);
+        model.setName(nameField.getText());
     }
 
     @FXML
@@ -67,14 +68,15 @@ public class Controller {
 
     @FXML
     void sendMessage(ActionEvent event) {
-        this.client.sendMessage(this.messageField.getText());
+        client.sendMessage(this.messageField.getText());
+        messageField.clear();
     }
 
-    private void setUpChatListener() {
-        model.textProperty().addListener((textProperty, oldValue, newValue) -> {
+    /*private void setUpChatListener() {
+        model.getText().addListener((textProperty, oldValue, newValue) -> {
              textArea.appendText("\n" + newValue);
              messageField.clear();
         });
-    }
+    }*/
 }
 

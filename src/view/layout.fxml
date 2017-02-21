@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
+   <JFXButton fx:id="startButton" buttonType="RAISED" layoutX="15.0" layoutY="303.0" onAction="#joinServer"
+              prefHeight="58.0" prefWidth="190.0" ripplerFill="#ffffffd9" style="-fx-background-color: #009966;"
+              text="Start">
+      <font>
+         <Font size="19.0"/>
+      </font>
+   </JFXButton>
+   <JFXTextField fx:id="nameField" focusColor="#009966" layoutX="15.0" layoutY="94.0" maxWidth="218.0" minWidth="218.0"
+                 prefHeight="32.0" prefWidth="218.0" promptText="Enter Your Username.."/>
+   <JFXTextField fx:id="ipField" focusColor="#009966" layoutX="15.0" layoutY="139.0" maxWidth="218.0" minWidth="218.0"
+                 prefHeight="32.0" prefWidth="218.0" promptText="Enter Server's IP Address.."/>
+   <JFXTextField fx:id="portField" focusColor="#009966" layoutX="15.0" layoutY="184.0" maxWidth="218.0" minWidth="218.0"
+                 prefHeight="32.0" prefWidth="218.0" promptText="Enter Server's Port Number.."/>
+   <JFXCheckBox fx:id="hostToggle" alignment="CENTER" contentDisplay="TOP" layoutX="51.0" layoutY="231.0"
+                onAction="#startServer" prefHeight="47.0" prefWidth="119.0" text="Hosting?"
+                AnchorPane.leftAnchor="51.0"/>
+   <JFXTextField fx:id="messageField" layoutX="233.0" layoutY="361.0" prefHeight="25.0" prefWidth="275.0"/>
+   <JFXTextArea fx:id="textArea" layoutX="296.0" layoutY="40.0" prefHeight="269.0" prefWidth="283.0"/>
+   <JFXButton fx:id="sendButton" layoutX="527.0" layoutY="361.0" onAction="#sendMessage" text="Send"/>
+</AnchorPane>
