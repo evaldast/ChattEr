@@ -12,7 +12,6 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.ear
 *.zip
@@ -65,7 +64,6 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
-.gitignore
 .idea/checkstyle-idea.xml
 .idea/vcs.xml
 out/production/ChattEr/view/layout.fxml
