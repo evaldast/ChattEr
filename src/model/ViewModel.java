@@ -6,8 +6,8 @@ import javafx.beans.property.StringProperty;
 
 public class ViewModel {
 
-    private StringProperty text = new SimpleStringProperty("Initial text...");
-    private StringProperty name = new SimpleStringProperty("Name");
+    private StringProperty text = new SimpleStringProperty();
+    private StringProperty name = new SimpleStringProperty();
 
     public void setText(String text) {
         this.text.setValue(text);
