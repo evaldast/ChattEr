@@ -13,7 +13,7 @@ import model.ViewModel;
 
 public class Controller {
 
-    private boolean launchServer;
+    private boolean isHosting;
     private Client client;
     private ViewModel model;
 
@@ -50,33 +50,25 @@ public class Controller {
 
     @FXML
     void joinServer(ActionEvent event) {
-        if (launchServer) {
-            Thread serverThread = new Thread(new Server(Integer.parseInt(this.portField.getText())));
-            this.ipField.setText("localhost");
+        if (isHosting) {
+            Thread serverThread = new Thread(new Server(portField.getText()));
+            ipField.setText("127.0.0.1");
             serverThread.start();
         }
-        client = new Client(model);
-        model.setUpChatListener(textArea);
+        client = new Client(model, portField.getText(), ipField.getText());
         model.setName(nameField.getText());
+        model.setUpChatListener(textArea);
     }
 
     @FXML
-    void startServer(ActionEvent event) {
-        launchServer = !launchServer;
-        System.out.println(launchServer);
+    private void startServer(ActionEvent event) {
+        isHosting = !isHosting;
     }
 
     @FXML
     void sendMessage(ActionEvent event) {
-        client.sendMessage(this.messageField.getText());
+        client.sendMessage(nameField.getText() + ": " + messageField.getText());
         messageField.clear();
     }
-
-    /*private void setUpChatListener() {
-        model.getText().addListener((textProperty, oldValue, newValue) -> {
-             textArea.appendText("\n" + newValue);
-             messageField.clear();
-        });
-    }*/
 }
 

@@ -12,9 +12,9 @@ public class Server implements Runnable {
     private int portNumber;
     private ServerSocket serverSocket;
 
-    public Server(int portNumber) {
+    public Server(String portNumber) {
         try {
-            this.portNumber = portNumber;
+            this.portNumber = Integer.parseInt(portNumber);
             this.serverSocket = new ServerSocket(this.portNumber);
             this.clientsConnected = new ArrayList<>();
         } catch (Exception ex) {
@@ -30,10 +30,7 @@ public class Server implements Runnable {
     private void receiveMessages() {
         try {
             while (true) {
-                System.out.println("Waiting for connection. Listening on port: " + this.portNumber);
                 Socket clientSocket = serverSocket.accept();
-                System.out.println("Socket accepted");
-
                 PrintWriter writer = new PrintWriter(clientSocket.getOutputStream());
                 this.clientsConnected.add(writer);
 

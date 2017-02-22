@@ -10,8 +10,9 @@ class MessageSenderThread implements Runnable {
 
     private BufferedReader reader;
     private List<PrintWriter> clientsConnected;
+    private String userName;
 
-    public MessageSenderThread(Socket clientSocket, List<PrintWriter> clientsConnected) {
+    MessageSenderThread(Socket clientSocket, List<PrintWriter> clientsConnected) {
         try {
             this.clientsConnected = clientsConnected;
             InputStreamReader inputStreamReader = new InputStreamReader(clientSocket.getInputStream());
@@ -26,7 +27,6 @@ class MessageSenderThread implements Runnable {
         try {
             String messageToSend;
             while ((messageToSend = this.reader.readLine()) != null) {
-                System.out.println("sending: " + messageToSend);
                 this.clientsConnected.get(0).println(messageToSend);
                 this.clientsConnected.get(0).flush();
                 for (PrintWriter element : this.clientsConnected) {

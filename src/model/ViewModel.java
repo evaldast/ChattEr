@@ -17,6 +17,6 @@ public class ViewModel {
     }
 
     public void setUpChatListener(JFXTextArea textArea) {
-        text.addListener((textProperty, oldValue, newValue) -> textArea.appendText("\n" + name.getValue() + ": " + newValue));
+        text.addListener((textProperty, oldValue, newValue) -> textArea.appendText("\n" + newValue));
     }
 }
