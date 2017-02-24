@@ -76,25 +76,33 @@ public class Controller implements Initializable {
 
     @FXML
     void joinServer(ActionEvent event) {
-        if (isHosting) {
-            Thread serverThread = new Thread(new Server(portField.getText()));
-            ipField.setText("127.0.0.1");
-            serverThread.start();
-        }
-        client = new Client(model, portField.getText(), ipField.getText());
-        model.setName(nameField.getText());
-        model.setUpChatListener(textArea);
-    }
+        if (isHosting) startServer();
 
-    @FXML
-    private void startServer(ActionEvent event) {
-        isHosting = !isHosting;
+        client = new Client(model, portField.getText(), ipField.getText());
+        setUp();
     }
 
     @FXML
     void sendMessage(ActionEvent event) {
         client.sendMessage(nameField.getText() + ": " + messageField.getText());
         messageField.clear();
+    }
+
+    @FXML
+    private void toggleHost(ActionEvent event) {
+        isHosting = !isHosting;
+        ipField.setText("127.0.0.1");
+        ipField.setDisable(true);
+    }
+
+    private void startServer() {
+        Thread serverThread = new Thread(new Server(portField.getText()));
+        serverThread.start();
+    }
+
+    private void setUp() {
+        model.setName(nameField.getText());
+        model.setUpChatListener(textArea);
     }
 }
 
