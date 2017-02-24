@@ -15,6 +15,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("view/layout.fxml"));
         Scene scene = new Scene(root);
         //scene.getStylesheets().add(getClass().getResource("view/bubble.css").toExternalForm());
+        primaryStage.setResizable(false);
         primaryStage.setTitle("ChattEr");
         primaryStage.setScene(scene);
         primaryStage.show();

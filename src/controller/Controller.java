@@ -2,11 +2,16 @@ package controller;
 
 import com.jfoenix.controls.*;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.util.Duration;
 import model.Client;
 import model.Server;
 import model.ViewModel;
@@ -60,19 +65,34 @@ public class Controller implements Initializable {
     @FXML
     private VBox sideBar;
 
+    @FXML
+    private JFXTextArea usersConnectedTextArea;
+
+    @FXML
+    private ScrollPane usersConnectedPane;
+
+    @FXML
+    private Text usersConnectedText;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         drawer.setSidePane(sideBar);
-        textArea.setEditable(false);
+        //textArea.setDisable(true);
 
         HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(hamburger);
         transition.setRate(-1);
         hamburger.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_PRESSED, mouseClick ->{
             transition.setRate(transition.getRate() * -1);
             transition.play();
-            if(drawer.isShown())
+            if(drawer.isShown()) {
                 drawer.close();
-            else drawer.open();
+                Timeline fiveSecondsWonder = new Timeline(new KeyFrame(Duration.seconds(0.5), event -> showHideUsersConnected(true)));
+                fiveSecondsWonder.play();
+            }
+            else {
+                drawer.open();
+                showHideUsersConnected(false);
+            }
         });
     }
 
@@ -110,6 +130,12 @@ public class Controller implements Initializable {
         portField.setDisable(true);
         ipField.setDisable(true);
         nameField.setDisable(true);
+    }
+
+    private void showHideUsersConnected(boolean isShown) {
+        usersConnectedPane.setVisible(isShown);
+        usersConnectedText.setVisible(isShown);
+        usersConnectedTextArea.setVisible(isShown);
     }
 }
 
