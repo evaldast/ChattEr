@@ -63,13 +63,15 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         drawer.setSidePane(sideBar);
+        textArea.setEditable(false);
 
         HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(hamburger);
         transition.setRate(-1);
         hamburger.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_PRESSED, mouseClick ->{
             transition.setRate(transition.getRate() * -1);
             transition.play();
-            if(drawer.isShown()) drawer.close();
+            if(drawer.isShown())
+                drawer.close();
             else drawer.open();
         });
     }
@@ -80,6 +82,8 @@ public class Controller implements Initializable {
 
         client = new Client(model, portField.getText(), ipField.getText());
         setUp();
+        startButton.setText("Disconnect");
+        startButton.setStyle("-fx-background-color: #d9534f;");
     }
 
     @FXML

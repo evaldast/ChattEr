@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <AnchorPane fx:id="mainPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
-   <JFXTextArea fx:id="textArea" layoutX="296.0" layoutY="40.0" prefHeight="269.0" prefWidth="283.0" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="296.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
    <JFXButton fx:id="sendButton" layoutX="527.0" layoutY="361.0" onAction="#sendMessage" text="Send" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="9.0" />
    <JFXHamburger fx:id="hamburger" layoutX="15.0" layoutY="14.0" />
    <JFXTextField fx:id="messageField" layoutX="233.0" layoutY="361.0" prefHeight="25.0" prefWidth="275.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="233.0" AnchorPane.rightAnchor="71.0" />
@@ -29,7 +28,7 @@
                   </font>
                </JFXTextField>
                <JFXCheckBox fx:id="hostToggle" alignment="CENTER" contentDisplay="TOP" onAction="#toggleHost" prefHeight="47.0" prefWidth="231.0" text="Hosting?" />
-               <JFXButton fx:id="startButton" buttonType="RAISED" onAction="#joinServer" prefHeight="58.0" prefWidth="181.0" ripplerFill="#ffffffd9" style="-fx-background-color: #009966;" text="Start">
+               <JFXButton fx:id="startButton" buttonType="RAISED" onAction="#joinServer" prefHeight="58.0" prefWidth="181.0" ripplerFill="#ffffffd9" style="-fx-background-color: #009966;" text="Connect">
                   <font>
                      <Font size="19.0" />
                   </font>
@@ -38,4 +37,9 @@
          </VBox>
       </children>
    </JFXDrawer>
+   <ScrollPane layoutX="245.0" layoutY="31.0" prefHeight="309.0" prefWidth="304.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="31.0">
+      <content>
+         <JFXTextArea fx:id="textArea" prefHeight="307.0" prefWidth="302.0" />
+      </content>
+   </ScrollPane>
 </AnchorPane>
