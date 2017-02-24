@@ -1,9 +1,5 @@
 package model;
 
-import controller.Controller;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -24,7 +20,6 @@ class MessageReceiverThread implements Runnable {
         try {
             String messageReceived;
             while((messageReceived = this.reader.readLine()) != null) {
-                System.out.println(messageReceived);
                 this.model.setText(messageReceived);
             }
         } catch (Exception ex) {

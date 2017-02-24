@@ -84,7 +84,7 @@ public class Controller implements Initializable {
 
     @FXML
     void sendMessage(ActionEvent event) {
-        client.sendMessage(nameField.getText() + ": " + messageField.getText());
+        client.sendMessage(nameField.getText() + ":  " + messageField.getText());
         messageField.clear();
     }
 
@@ -103,6 +103,9 @@ public class Controller implements Initializable {
     private void setUp() {
         model.setName(nameField.getText());
         model.setUpChatListener(textArea);
+        portField.setDisable(true);
+        ipField.setDisable(true);
+        nameField.setDisable(true);
     }
 }
 
