@@ -1,5 +1,6 @@
-package model;
+package Server;
 
+import NotificationHandlers.ExceptionHandler;
 import controller.Controller;
 
 import java.io.PrintWriter;

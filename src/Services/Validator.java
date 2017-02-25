@@ -1,8 +1,7 @@
-package model;
+package Services;
 
-/**
- * Created by User on 2017-02-25.
- */
+import NotificationHandlers.NotificationHandler;
+
 public class Validator {
 
     private NotificationHandler notificationHandler;

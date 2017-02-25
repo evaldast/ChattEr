@@ -1,6 +1,8 @@
-package model;
+package Client;
 
+import NotificationHandlers.ExceptionHandler;
 import controller.Controller;
+import model.ViewModel;
 
 import java.io.PrintWriter;
 import java.net.Socket;

@@ -1,6 +1,8 @@
-package model;
+package Client;
 
+import NotificationHandlers.ExceptionHandler;
 import controller.Controller;
+import model.ViewModel;
 
 import java.io.BufferedReader;
 import java.io.IOException;
