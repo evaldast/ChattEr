@@ -95,7 +95,7 @@ public class Controller implements Initializable {
         setUp();
         /*startButton.setText("Disconnect");
         startButton.setStyle("-fx-background-color: #d9534f;");*/
-        notifyConnected();
+        notify("Connected to Server");
     }
 
     @FXML
@@ -132,11 +132,11 @@ public class Controller implements Initializable {
         nameField.setDisable(true);
     }
 
-    private void notifyConnected() {
+    private void notify(String text) {
         Notifications builder = Notifications.create()
-                .title("Connected to Server")
+                .text("text")
                 .hideAfter(Duration.seconds(3))
-                .position(Pos.CENTER);
+                .position(Pos.BOTTOM_RIGHT);
         builder.darkStyle();
         builder.showInformation();
     }
