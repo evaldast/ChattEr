@@ -26,7 +26,7 @@ class MessageReceiverThread implements Runnable {
     public void run() {
         try {
             String messageReceived;
-            while((messageReceived = this.reader.readLine()) != null) {
+            while ((messageReceived = this.reader.readLine()) != null) {
                 this.model.setText(messageReceived);
             }
         } catch (Exception ex) {

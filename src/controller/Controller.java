@@ -6,28 +6,24 @@ import Server.Server;
 import Services.Validator;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
-import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import model.ViewModel;
 
 public class Controller {
 
-    private static boolean isRunning ;
+    private static boolean isRunning;
     private boolean isHosting;
     private Client client;
     private ViewModel model;
     private NotificationHandler notificationHandler;
     private Validator validator;
 
-    public Controller() {
-        model = new ViewModel();
-        notificationHandler = new NotificationHandler();
-        validator = new Validator();
-    }
+    @FXML
+    private TextArea textArea;
 
     @FXML
     private JFXButton startButton;
@@ -47,8 +43,11 @@ public class Controller {
     @FXML
     private JFXTextField messageField;
 
-    @FXML
-    public JFXTextArea textArea;
+    public Controller() {
+        model = new ViewModel();
+        notificationHandler = new NotificationHandler();
+        validator = new Validator();
+    }
 
 /*    @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -71,17 +70,21 @@ public class Controller {
         });
     }*/
 
+    public static void changeRunningStatus(boolean status) {
+        isRunning = status;
+    }
+
     @FXML
-    void joinServer(ActionEvent event) {
-        if(!validator.validateFields(nameField.getText(), ipField.getText(), portField.getText())) {
+    void joinServer() {
+        if (!validator.validateFields(nameField.getText(), ipField.getText(), portField.getText())) {
             return;
         }
 
-        if(isHosting) startServer();
+        if (isHosting) startServer();
 
         client = new Client(model, portField.getText(), ipField.getText());
 
-        if(isRunning) {
+        if (isRunning) {
             setUp();
         /*startButton.setText("Disconnect");
         startButton.setStyle("-fx-background-color: #d9534f;");*/
@@ -99,11 +102,11 @@ public class Controller {
         } else {
             notificationHandler.throwNotification("Connect to Server first");
         }
-}
+    }
 
     @FXML
-    void sendMessage(ActionEvent event) {
-        if(isRunning) {
+    void sendMessage() {
+        if (isRunning) {
             client.sendMessage(nameField.getText() + ":  " + messageField.getText());
             messageField.clear();
         } else {
@@ -111,12 +114,8 @@ public class Controller {
         }
     }
 
-    public static void changeRunningStatus(boolean status) {
-        isRunning = status;
-    }
-
     @FXML
-    private void toggleHost(ActionEvent event) {
+    private void toggleHost() {
         isHosting = !isHosting;
         ipField.setText("127.0.0.1");
         ipField.setDisable(true);
