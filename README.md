@@ -10,7 +10,7 @@
 
 ### Small Demo
 
-![ChattEr Demo](http://imgur.com/a/JyGJa)
+![ChattEr Demo]({{site.baseurl}}/http://imgur.com/C4hCcGq)
 
 Feel free to use the source code for educational purpose (If you're brave enough)
 
