@@ -13,5 +13,4 @@
 ![ChattEr Demo](http://i.imgur.com/D5vp62m.gif)
 
 
-Feel free to use the source code for educational purpose (If you're brave enough)
-
+> Feel free to use the source code for educational purpose (If you're brave enough)
