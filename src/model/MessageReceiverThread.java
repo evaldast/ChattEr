@@ -1,5 +1,7 @@
 package model;
 
+import controller.Controller;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -15,6 +17,7 @@ class MessageReceiverThread implements Runnable {
         exceptionHandler = new ExceptionHandler();
         this.model = model;
         this.reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        Controller.changeRunningStatus(true);
     }
 
     @Override
