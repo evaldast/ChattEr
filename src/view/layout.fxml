@@ -5,10 +5,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <AnchorPane fx:id="mainPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
-   <JFXButton fx:id="sendButton" cancelButton="true" layoutX="527.0" layoutY="361.0" onAction="#sendMessage" text="Send" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="9.0" />
-   <JFXTextField fx:id="messageField" layoutX="233.0" layoutY="361.0" onKeyPressed="#sendMessageEnter" prefHeight="25.0" prefWidth="275.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="233.0" AnchorPane.rightAnchor="71.0" />
-   <ScrollPane layoutX="245.0" layoutY="46.0" prefHeight="294.0" prefWidth="304.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="46.0">
-         <JFXTextArea fx:id="textArea" editable="false" prefHeight="292.0" prefWidth="302.0" />
+   <JFXButton fx:id="sendButton" layoutX="506.0" layoutY="361.0" onAction="#sendMessage" style="-fx-background-color: #009966;" text="Send" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="30.0" />
+   <JFXTextField fx:id="messageField" layoutX="242.0" layoutY="361.0" onKeyPressed="#sendMessageEnter" prefHeight="25.0" prefWidth="254.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="83.0" />
+   <ScrollPane layoutX="245.0" layoutY="46.0" prefHeight="294.0" prefWidth="304.0" style="-fx-border-color: #4059a9; -fx-border-radius: 10; -fx-background-radius: 10;" styleClass="edge-to-edge" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="46.0">
+         <JFXTextArea fx:id="textArea" editable="false" prefHeight="290.0" prefWidth="300.0" />
    </ScrollPane>
    <VBox fx:id="sideBar" alignment="TOP_CENTER" layoutX="14.0" layoutY="46.0" prefHeight="337.0" prefWidth="225.0">
          <JFXTextField fx:id="nameField" focusColor="#009966" maxWidth="218.0" minWidth="218.0" prefHeight="50.0" prefWidth="218.0" promptText="Enter Your Username.." style="-fx-padding: 15;">

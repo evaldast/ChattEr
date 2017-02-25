@@ -10,14 +10,16 @@ class MessageSenderThread implements Runnable {
 
     private BufferedReader reader;
     private List<PrintWriter> clientsConnected;
+    private ExceptionHandler exceptionHandler;
 
     MessageSenderThread(Socket clientSocket, List<PrintWriter> clientsConnected) {
+        exceptionHandler = new ExceptionHandler();
         try {
             this.clientsConnected = clientsConnected;
             InputStreamReader inputStreamReader = new InputStreamReader(clientSocket.getInputStream());
             this.reader = new BufferedReader(inputStreamReader);
         } catch (Exception ex) {
-            ex.printStackTrace();
+            exceptionHandler.throwExceptionNotification(ex.getMessage());
         }
     }
 
@@ -34,7 +36,7 @@ class MessageSenderThread implements Runnable {
                 }
             }
         } catch (Exception ex) {
-            ex.printStackTrace();
+            exceptionHandler.throwExceptionNotification(ex.getMessage());
         }
     }
 }

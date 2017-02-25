@@ -9,8 +9,10 @@ class MessageReceiverThread implements Runnable {
 
     private BufferedReader reader;
     private ViewModel model;
+    private ExceptionHandler exceptionHandler;
 
     MessageReceiverThread(Socket socket, ViewModel model) throws IOException {
+        exceptionHandler = new ExceptionHandler();
         this.model = model;
         this.reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
     }
@@ -23,7 +25,7 @@ class MessageReceiverThread implements Runnable {
                 this.model.setText(messageReceived);
             }
         } catch (Exception ex) {
-            ex.printStackTrace();
+            exceptionHandler.throwExceptionNotification(ex.getMessage());
         }
     }
 }

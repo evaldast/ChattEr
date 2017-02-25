@@ -12,6 +12,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import model.Client;
+import model.ExceptionHandler;
 import model.Server;
 import model.ViewModel;
 import org.controlsfx.control.Notifications;
@@ -22,9 +23,11 @@ public class Controller {
     private boolean isHosting;
     private Client client;
     private ViewModel model;
+    private ExceptionHandler exceptionHandler;
 
     public Controller() {
         this.model = new ViewModel();
+        this.exceptionHandler = new ExceptionHandler();
     }
 
     @FXML
@@ -75,7 +78,6 @@ public class Controller {
     @FXML
     void joinServer(ActionEvent event) {
         if(!validator()) {
-            notify("Check if Fields are entered correctly");
             return;
         }
 
@@ -134,12 +136,13 @@ public class Controller {
     }
 
     private void notify(String text) {
-        Notifications builder = Notifications.create()
+        Notifications notificationsBuilder;
+        notificationsBuilder = Notifications.create()
                 .text(text)
                 .hideAfter(Duration.seconds(3))
                 .position(Pos.BOTTOM_RIGHT);
-        builder.darkStyle();
-        builder.showInformation();
+        notificationsBuilder.darkStyle();
+        notificationsBuilder.showInformation();
     }
 
     private boolean validator() {

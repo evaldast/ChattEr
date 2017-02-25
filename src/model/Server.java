@@ -10,14 +10,16 @@ public class Server implements Runnable {
 
     private List<PrintWriter> clientsConnected;
     private ServerSocket serverSocket;
+    private ExceptionHandler exceptionHandler;
 
     public Server(String portNumber) {
+        exceptionHandler = new ExceptionHandler();
         try {
             int port = Integer.parseInt(portNumber);
             this.serverSocket = new ServerSocket(port);
             this.clientsConnected = new ArrayList<>();
         } catch (Exception ex) {
-            ex.printStackTrace();
+            exceptionHandler.throwExceptionNotification(ex.getMessage());
         }
     }
 
@@ -37,7 +39,7 @@ public class Server implements Runnable {
                 senderThread.start();
             }
         } catch (Exception ex) {
-            ex.printStackTrace();
+            exceptionHandler.throwExceptionNotification(ex.getMessage());
         }
     }
 }
