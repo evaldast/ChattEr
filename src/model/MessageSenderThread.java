@@ -10,7 +10,6 @@ class MessageSenderThread implements Runnable {
 
     private BufferedReader reader;
     private List<PrintWriter> clientsConnected;
-    private String userName;
 
     MessageSenderThread(Socket clientSocket, List<PrintWriter> clientsConnected) {
         try {

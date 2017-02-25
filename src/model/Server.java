@@ -9,13 +9,12 @@ import java.util.List;
 public class Server implements Runnable {
 
     private List<PrintWriter> clientsConnected;
-    private int portNumber;
     private ServerSocket serverSocket;
 
     public Server(String portNumber) {
         try {
-            this.portNumber = Integer.parseInt(portNumber);
-            this.serverSocket = new ServerSocket(this.portNumber);
+            int port = Integer.parseInt(portNumber);
+            this.serverSocket = new ServerSocket(port);
             this.clientsConnected = new ArrayList<>();
         } catch (Exception ex) {
             ex.printStackTrace();

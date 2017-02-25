@@ -3,7 +3,7 @@
 <?import com.jfoenix.controls.*?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.text.Font?>
 <AnchorPane fx:id="mainPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
    <JFXButton fx:id="sendButton" cancelButton="true" layoutX="527.0" layoutY="361.0" onAction="#sendMessage" text="Send" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="9.0" />
    <JFXHamburger fx:id="hamburger" layoutX="15.0" layoutY="14.0" />
@@ -40,16 +40,6 @@
    <ScrollPane layoutX="245.0" layoutY="46.0" prefHeight="294.0" prefWidth="304.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="46.0">
       <content>
          <JFXTextArea fx:id="textArea" disable="true" editable="false" prefHeight="292.0" prefWidth="302.0" />
-      </content>
-   </ScrollPane>
-   <Text fx:id="usersConnectedText" layoutX="35.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Currently in Chat:">
-      <font>
-         <Font size="20.0" />
-      </font>
-   </Text>
-   <ScrollPane fx:id="usersConnectedPane" layoutX="19.0" layoutY="84.0" prefHeight="253.0" prefWidth="190.0">
-      <content>
-         <JFXTextArea fx:id="usersConnectedTextArea" disable="true" prefHeight="251.0" prefWidth="188.0" />
       </content>
    </ScrollPane>
 </AnchorPane>

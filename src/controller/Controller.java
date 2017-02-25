@@ -2,25 +2,24 @@ package controller;
 
 import com.jfoenix.controls.*;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ScrollPane;
+import javafx.geometry.Pos;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.util.Duration;
 import model.Client;
 import model.Server;
 import model.ViewModel;
+import org.controlsfx.control.Notifications;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
+    private boolean isRunning;
     private boolean isHosting;
     private Client client;
     private ViewModel model;
@@ -65,19 +64,9 @@ public class Controller implements Initializable {
     @FXML
     private VBox sideBar;
 
-    @FXML
-    private JFXTextArea usersConnectedTextArea;
-
-    @FXML
-    private ScrollPane usersConnectedPane;
-
-    @FXML
-    private Text usersConnectedText;
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         drawer.setSidePane(sideBar);
-        //textArea.setDisable(true);
 
         HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(hamburger);
         transition.setRate(-1);
@@ -86,12 +75,12 @@ public class Controller implements Initializable {
             transition.play();
             if(drawer.isShown()) {
                 drawer.close();
-                Timeline fiveSecondsWonder = new Timeline(new KeyFrame(Duration.seconds(0.5), event -> showHideUsersConnected(true)));
-                fiveSecondsWonder.play();
+                /*Timeline fiveSecondsWonder = new Timeline(new KeyFrame(Duration.seconds(0.5), event -> showHideUsersConnected(true)));
+                fiveSecondsWonder.play();*/
             }
             else {
                 drawer.open();
-                showHideUsersConnected(false);
+                //showHideUsersConnected(false);
             }
         });
     }
@@ -102,8 +91,9 @@ public class Controller implements Initializable {
 
         client = new Client(model, portField.getText(), ipField.getText());
         setUp();
-        startButton.setText("Disconnect");
-        startButton.setStyle("-fx-background-color: #d9534f;");
+        /*startButton.setText("Disconnect");
+        startButton.setStyle("-fx-background-color: #d9534f;");*/
+        notifyConnected();
     }
 
     @FXML
@@ -132,10 +122,19 @@ public class Controller implements Initializable {
         nameField.setDisable(true);
     }
 
-    private void showHideUsersConnected(boolean isShown) {
+    private void notifyConnected() {
+        Notifications builder = Notifications.create()
+                .title("Connected to Server")
+                .hideAfter(Duration.seconds(3))
+                .position(Pos.CENTER);
+        builder.darkStyle();
+        builder.showInformation();
+    }
+
+    /*private void showHideUsersConnected(boolean isShown) {
         usersConnectedPane.setVisible(isShown);
         usersConnectedText.setVisible(isShown);
         usersConnectedTextArea.setVisible(isShown);
-    }
+    }*/
 }
 
