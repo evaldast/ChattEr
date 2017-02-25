@@ -1,5 +1,7 @@
 package model;
 
+import controller.Controller;
+
 import java.io.PrintWriter;
 import java.net.Socket;
 
@@ -15,8 +17,10 @@ public class Client {
             this.writer = new PrintWriter(socket.getOutputStream(), true);
             Thread receiverThread = new Thread(new MessageReceiverThread(socket, model));
             receiverThread.start();
+            Controller.changeRunningStatus(true);
         } catch (Exception ex) {
             exceptionHandler.throwExceptionNotification(ex.getMessage());
+            Controller.changeRunningStatus(false);
         }
     }
 

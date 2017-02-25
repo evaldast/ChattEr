@@ -19,7 +19,7 @@ import org.controlsfx.control.Notifications;
 
 public class Controller {
 
-    private boolean isRunning;
+    private static boolean isRunning ;
     private boolean isHosting;
     private Client client;
     private ViewModel model;
@@ -28,6 +28,7 @@ public class Controller {
     public Controller() {
         this.model = new ViewModel();
         this.exceptionHandler = new ExceptionHandler();
+        isRunning = true;
     }
 
     @FXML
@@ -81,14 +82,16 @@ public class Controller {
             return;
         }
 
-        if (isHosting) startServer();
+        if(isHosting) startServer();
 
         client = new Client(model, portField.getText(), ipField.getText());
-        setUp();
+
+        if(isRunning) {
+            setUp();
         /*startButton.setText("Disconnect");
         startButton.setStyle("-fx-background-color: #d9534f;");*/
-        notify("Connected to Server");
-        isRunning = true;
+            notify("Connected to Server");
+        }
     }
 
     @FXML
@@ -111,6 +114,10 @@ public class Controller {
         } else {
             notify("Connect to Server first");
         }
+    }
+
+    public static void changeRunningStatus(boolean status) {
+        isRunning = status;
     }
 
     @FXML

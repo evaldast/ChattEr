@@ -1,5 +1,7 @@
 package model;
 
+import controller.Controller;
+
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -40,6 +42,7 @@ public class Server implements Runnable {
             }
         } catch (Exception ex) {
             exceptionHandler.throwExceptionNotification(ex.getMessage());
+            Controller.changeRunningStatus(false);
         }
     }
 }
