@@ -127,6 +127,7 @@ public class Controller {
     }
 
     private void setUp() {
+        textArea.setWrapText(true);
         model.setName(nameField.getText());
         model.setUpChatListener(textArea);
         portField.setDisable(true);
