@@ -7,7 +7,7 @@
 <AnchorPane fx:id="mainPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
    <JFXButton fx:id="sendButton" cancelButton="true" layoutX="527.0" layoutY="361.0" onAction="#sendMessage" text="Send" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="9.0" />
    <JFXHamburger fx:id="hamburger" layoutX="15.0" layoutY="14.0" />
-   <JFXTextField fx:id="messageField" layoutX="233.0" layoutY="361.0" prefHeight="25.0" prefWidth="275.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="233.0" AnchorPane.rightAnchor="71.0" />
+   <JFXTextField fx:id="messageField" layoutX="233.0" layoutY="361.0" prefHeight="25.0" prefWidth="275.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="233.0" AnchorPane.rightAnchor="71.0" onKeyPressed="#sendMessageEnter"/>
    <JFXDrawer fx:id="drawer" defaultDrawerSize="190.0" layoutY="42.0" prefHeight="358.0" prefWidth="218.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="42.0">
       <children>
          <VBox fx:id="sideBar" alignment="TOP_CENTER" prefHeight="337.0" prefWidth="272.0">
@@ -39,7 +39,7 @@
    </JFXDrawer>
    <ScrollPane layoutX="245.0" layoutY="46.0" prefHeight="294.0" prefWidth="304.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="46.0">
       <content>
-         <JFXTextArea fx:id="textArea" disable="true" editable="false" prefHeight="292.0" prefWidth="302.0" />
+         <JFXTextArea fx:id="textArea" editable="false" prefHeight="292.0" prefWidth="302.0" />
       </content>
    </ScrollPane>
 </AnchorPane>

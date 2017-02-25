@@ -6,6 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
@@ -95,6 +97,14 @@ public class Controller implements Initializable {
         startButton.setStyle("-fx-background-color: #d9534f;");*/
         notifyConnected();
     }
+
+    @FXML
+    public void sendMessageEnter(KeyEvent event) {
+    if (event.getCode() == KeyCode.ENTER) {
+        client.sendMessage(nameField.getText() + ":  " + messageField.getText());
+        messageField.clear();
+    }
+}
 
     @FXML
     void sendMessage(ActionEvent event) {
