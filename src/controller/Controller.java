@@ -10,7 +10,6 @@ import javafx.geometry.Pos;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import model.Client;
 import model.Server;
@@ -51,12 +50,6 @@ public class Controller {
 
     @FXML
     public JFXTextArea textArea;
-
-    @FXML
-    private JFXButton sendButton;
-
-    @FXML
-    private VBox sideBar;
 
 /*    @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -136,6 +129,8 @@ public class Controller {
         portField.setDisable(true);
         ipField.setDisable(true);
         nameField.setDisable(true);
+        hostToggle.setDisable(true);
+        startButton.setDisable(true);
     }
 
     private void notify(String text) {
