@@ -14,6 +14,5 @@ Small Demo
 
 ##
 
-
 ![ChattEr Demo]({{site.baseurl}}/ChattEr/chatter_gif.gif)
 
