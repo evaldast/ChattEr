@@ -12,5 +12,7 @@
 
 ![ChattEr Demo]({{site.baseurl}}/ChattEr/chatter_gif.gif)
 
+
+
 Feel free to use the source code for educational purpose (If you're brave enough)
 
