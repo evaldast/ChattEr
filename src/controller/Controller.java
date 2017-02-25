@@ -1,10 +1,11 @@
 package controller;
 
-import com.jfoenix.controls.*;
-import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -16,10 +17,7 @@ import model.Server;
 import model.ViewModel;
 import org.controlsfx.control.Notifications;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class Controller implements Initializable {
+public class Controller {
 
     private boolean isRunning;
     private boolean isHosting;
@@ -58,15 +56,9 @@ public class Controller implements Initializable {
     private JFXButton sendButton;
 
     @FXML
-    private JFXHamburger hamburger;
-
-    @FXML
-    private JFXDrawer drawer;
-
-    @FXML
     private VBox sideBar;
 
-    @Override
+/*    @Override
     public void initialize(URL url, ResourceBundle rb) {
         drawer.setSidePane(sideBar);
 
@@ -77,18 +69,23 @@ public class Controller implements Initializable {
             transition.play();
             if(drawer.isShown()) {
                 drawer.close();
-                /*Timeline fiveSecondsWonder = new Timeline(new KeyFrame(Duration.seconds(0.5), event -> showHideUsersConnected(true)));
-                fiveSecondsWonder.play();*/
+                Timeline fiveSecondsWonder = new Timeline(new KeyFrame(Duration.seconds(0.5), event -> showHideUsersConnected(true)));
+                fiveSecondsWonder.play();
             }
             else {
                 drawer.open();
-                //showHideUsersConnected(false);
+                showHideUsersConnected(false);
             }
         });
-    }
+    }*/
 
     @FXML
     void joinServer(ActionEvent event) {
+        if(!validator()) {
+            notify("Check if Fields are entered correctly");
+            return;
+        }
+
         if (isHosting) startServer();
 
         client = new Client(model, portField.getText(), ipField.getText());
@@ -96,20 +93,29 @@ public class Controller implements Initializable {
         /*startButton.setText("Disconnect");
         startButton.setStyle("-fx-background-color: #d9534f;");*/
         notify("Connected to Server");
+        isRunning = true;
     }
 
     @FXML
     public void sendMessageEnter(KeyEvent event) {
-    if (event.getCode() == KeyCode.ENTER) {
-        client.sendMessage(nameField.getText() + ":  " + messageField.getText());
-        messageField.clear();
-    }
+        if (isRunning) {
+            if (event.getCode() == KeyCode.ENTER) {
+                client.sendMessage(nameField.getText() + ":  " + messageField.getText());
+                messageField.clear();
+            }
+        } else {
+            notify("Connect to Server first");
+        }
 }
 
     @FXML
     void sendMessage(ActionEvent event) {
-        client.sendMessage(nameField.getText() + ":  " + messageField.getText());
-        messageField.clear();
+        if(isRunning) {
+            client.sendMessage(nameField.getText() + ":  " + messageField.getText());
+            messageField.clear();
+        } else {
+            notify("Connect to Server first");
+        }
     }
 
     @FXML
@@ -134,11 +140,17 @@ public class Controller implements Initializable {
 
     private void notify(String text) {
         Notifications builder = Notifications.create()
-                .text("text")
+                .text(text)
                 .hideAfter(Duration.seconds(3))
                 .position(Pos.BOTTOM_RIGHT);
         builder.darkStyle();
         builder.showInformation();
+    }
+
+    private boolean validator() {
+        return !(nameField.getText().isEmpty() || nameField.getText() == null) &&
+                ipField.getText().matches("\\b\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\b") &&
+                portField.getText().matches("^[0-9]+$");
     }
 
     /*private void showHideUsersConnected(boolean isShown) {

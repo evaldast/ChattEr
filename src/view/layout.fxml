@@ -6,40 +6,31 @@
 <?import javafx.scene.text.Font?>
 <AnchorPane fx:id="mainPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
    <JFXButton fx:id="sendButton" cancelButton="true" layoutX="527.0" layoutY="361.0" onAction="#sendMessage" text="Send" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="9.0" />
-   <JFXHamburger fx:id="hamburger" layoutX="15.0" layoutY="14.0" />
-   <JFXTextField fx:id="messageField" layoutX="233.0" layoutY="361.0" prefHeight="25.0" prefWidth="275.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="233.0" AnchorPane.rightAnchor="71.0" onKeyPressed="#sendMessageEnter"/>
-   <JFXDrawer fx:id="drawer" defaultDrawerSize="190.0" layoutY="42.0" prefHeight="358.0" prefWidth="218.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="42.0">
-      <children>
-         <VBox fx:id="sideBar" alignment="TOP_CENTER" prefHeight="337.0" prefWidth="272.0">
-            <children>
-               <JFXTextField fx:id="nameField" focusColor="#009966" maxWidth="218.0" minWidth="218.0" prefHeight="50.0" prefWidth="218.0" promptText="Enter Your Username.." style="-fx-padding: 15;">
-                  <font>
-                     <Font size="15.0" />
-                  </font>
-               </JFXTextField>
-               <JFXTextField fx:id="ipField" focusColor="#009966" maxWidth="218.0" minWidth="218.0" prefHeight="50.0" prefWidth="218.0" promptText="Enter Server's IP Address.." style="-fx-padding: 15;">
-                  <font>
-                     <Font size="15.0" />
-                  </font>
-               </JFXTextField>
-               <JFXTextField fx:id="portField" focusColor="#009966" maxWidth="229.0" minWidth="9.0" prefHeight="50.0" prefWidth="229.0" promptText="Enter Server's Port Number.." style="-fx-padding: 15;">
-                  <font>
-                     <Font size="15.0" />
-                  </font>
-               </JFXTextField>
-               <JFXCheckBox fx:id="hostToggle" alignment="CENTER" contentDisplay="TOP" onAction="#toggleHost" prefHeight="47.0" prefWidth="231.0" text="Hosting?" />
-               <JFXButton fx:id="startButton" buttonType="RAISED" onAction="#joinServer" prefHeight="58.0" prefWidth="181.0" ripplerFill="#ffffffd9" style="-fx-background-color: #009966;" text="Connect">
-                  <font>
-                     <Font size="19.0" />
-                  </font>
-               </JFXButton>
-            </children>
-         </VBox>
-      </children>
-   </JFXDrawer>
+   <JFXTextField fx:id="messageField" layoutX="233.0" layoutY="361.0" onKeyPressed="#sendMessageEnter" prefHeight="25.0" prefWidth="275.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="233.0" AnchorPane.rightAnchor="71.0" />
    <ScrollPane layoutX="245.0" layoutY="46.0" prefHeight="294.0" prefWidth="304.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="46.0">
-      <content>
          <JFXTextArea fx:id="textArea" editable="false" prefHeight="292.0" prefWidth="302.0" />
-      </content>
    </ScrollPane>
+   <VBox fx:id="sideBar" alignment="TOP_CENTER" layoutX="14.0" layoutY="46.0" prefHeight="337.0" prefWidth="225.0">
+         <JFXTextField fx:id="nameField" focusColor="#009966" maxWidth="218.0" minWidth="218.0" prefHeight="50.0" prefWidth="218.0" promptText="Enter Your Username.." style="-fx-padding: 15;">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </JFXTextField>
+         <JFXTextField fx:id="ipField" focusColor="#009966" maxWidth="218.0" minWidth="218.0" prefHeight="50.0" prefWidth="218.0" promptText="Enter Server's IP Address.." style="-fx-padding: 15;">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </JFXTextField>
+         <JFXTextField fx:id="portField" focusColor="#009966" maxWidth="229.0" minWidth="9.0" prefHeight="50.0" prefWidth="229.0" promptText="Enter Server's Port Number.." style="-fx-padding: 15;">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </JFXTextField>
+         <JFXCheckBox fx:id="hostToggle" alignment="CENTER" contentDisplay="TOP" onAction="#toggleHost" prefHeight="47.0" prefWidth="231.0" text="Hosting?" />
+         <JFXButton fx:id="startButton" buttonType="RAISED" onAction="#joinServer" prefHeight="58.0" prefWidth="181.0" ripplerFill="#ffffffd9" style="-fx-background-color: #009966;" text="Connect">
+            <font>
+               <Font size="19.0" />
+            </font>
+         </JFXButton>
+   </VBox>
 </AnchorPane>
