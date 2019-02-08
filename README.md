@@ -1,6 +1,6 @@
 ## ChattEr
 
-**A simple chat client and server in one using JavaFX and TCP Sockets.**
+**A simple chat client and server in one using JavaFX and TCP Sockets with intention to learn Java**
 
 > Current Version 1.0.0RC
 
